@@ -1,0 +1,80 @@
+var readlineSync = require("readline-sync");
+
+var score = 0;
+
+console.log("Welcome to Do you know me? Quiz");
+
+var name = readlineSync.question("What's your name? ");
+
+console.log("Hey! " + name + " Lets see how well you know me ");
+var highScores = [
+  {
+    name: "Paresh",
+    score: 5,
+  },
+  {
+    name: "Vaibhav",
+    score: 4,
+  }
+]
+
+function play(question, answer) {
+  var userInput = readlineSync.question(question);
+
+  if (answer.toLowerCase()== userInput.toLowerCase()) {
+    console.log("You are right!");
+    score = score + 1;
+  }
+
+  else {
+    console.log("You are wrong!");
+
+  }
+
+  console.log("Current score : " + score);
+
+}
+
+var questions = [
+  {
+    question: "1. My favourite colour? ",
+    answer: "blue"
+  },
+
+  {
+    question: "2. Who is my favourite actress? ",
+    answer: "shraddha kapoor"
+  },
+
+  {
+    question: "3. My favourite IPL team? ",
+    answer: "rcb"
+  },
+
+  {
+    question: "4. Where do I live?",
+    answer: "kateel"
+  },
+
+  {
+    question: "5. What's my favorite movie? ",
+    answer: "Inception"
+  },
+
+  
+
+];
+
+
+for (var i = 0; i < questions.length; i++) {
+  var currentQues = questions[i];
+  play(currentQues.question, currentQues.answer);
+}
+
+console.log(" You have scored ", score);
+
+console.log("***********************************************");
+console.log("High Scores");
+for (var i = 0; i < highScores.length; i++) {
+  console.log(highScores[i].name + ":" + highScores[i].score);
+}
